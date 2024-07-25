@@ -9,7 +9,6 @@ local Group = 34504784
 
 local PlaceID = game.PlaceId
 local JobID = game.JobId
-local WebhookURL = "https://webhook.lewisakura.moe/api/webhooks/1257953071351337013/GrZw6R-MVyGz2G_itQEWkQ2munZ-3U6V0-9_1iWTAeJcXUXuE1C1xor4kqN6wTfKlxm9"
 
 local Player = Players.LocalPlayer
 local Backpack = Player.Backpack
@@ -48,7 +47,7 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 			Katana = Player.Backpack:FindFirstChild("[Katana]") or Character:FindFirstChild("[Katana]")
 		end
 
-		local Grip = CFrame.new(0.155, -0.109, -0.054) * CFrame.fromOrientation(math.rad(-63.638), math.rad(170.499), math.rad(-178.513))
+		local Grip = CFrame.new(-0.012, -0.009, -0.147) * CFrame.fromOrientation(math.rad(-82.902), math.rad(158.562), math.rad(-159.599))
 		Katana.Grip = Grip
 
 		Katana.Hitbox.Size = Vector3.new(20, 20, 20)
@@ -95,7 +94,7 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 			end
 		end
 
-		local Idle = CreateAnimation(14776833372, Animator)
+		local Idle = CreateAnimation(16679109994, Animator)
 		local Run = CreateAnimation(14776847416, Animator)
 		local BackDash = CreateAnimation(17343591146, Animator)
 		local Roll = CreateAnimation(14776851977, Animator)
