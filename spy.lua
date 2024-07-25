@@ -1,3 +1,5 @@
+wait(1.5)
+
 local Players = game:GetService("Players")
 local Debris = game:GetService("Debris")
 local TweenService = game:GetService("TweenService")
