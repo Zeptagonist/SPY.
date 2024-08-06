@@ -63,7 +63,9 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 					v.Transparency = 0.95
 				end
 			end
-		else
+		elseif Msg == "Stop Requiem!" and RequiemOn == true then
+			RequiemOn = false
+			
 			for i, v in pairs(Character:GetDescendants()) do
 				if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
 					v.Color = Stuff[v.Name .. "-Color"]
@@ -77,15 +79,17 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 		local CurrentWS = Humanoid.WalkSpeed
 		
 		if RequiemOn == true then
-			if Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) then
+			if Humanoid.MoveDirection == Vector3.new(0, 0, 0) then
+				Run:Stop()
+			else
 				local Final = CurrentWS / 10
 				Run:Play(nil, nil, Final)
 				WalkSound.PlaybackSpeed = Final
 				WalkSound:Play()
-			else
-				Run:Stop()
 			end
 		end
+		
+		wait()
 	end)
 else
 	Player:Kick(Player.Name .. " | " .. Player.UserId .. " | Is Not Whitelisted To Use The Script")
