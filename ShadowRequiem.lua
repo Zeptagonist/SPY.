@@ -23,7 +23,8 @@ local HumanoidRootPart = Character:WaitForChild("HumanoidRootPart")
 
 if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 	local RequiemOn = false
-	local Stuff = {}
+	local OldColor = nil
+	local OldTransparency = nil
 	
 	function CreateValue(Parent, Name, Value)
 		local StringValue = Instance.new("StringValue")
@@ -55,9 +56,9 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 			RequiemOn = true
 			
 			for i, v in pairs(Character:GetDescendants()) do
-				if v:IsA("BasePart") then
-					Stuff[v.Name .. "-Transparency"] = v.Transparency
-					Stuff[v.Name .. "-Color"] = v.Color
+				if v:IsA("BasePart") and v.Name ~= "LaserArm" or v.Name ~= "HumanoidRootPart" then
+					OldColor = v.Color
+					OldTransparency = v.Transparency
 					
 					v.Color = Color3.fromRGB(0, 0, 0)
 					v.Transparency = 0.95
@@ -67,9 +68,9 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 			RequiemOn = false
 			
 			for i, v in pairs(Character:GetDescendants()) do
-				if v:IsA("BasePart") and v.Name ~= "HumanoidRootPart" then
-					v.Color = Stuff[v.Name .. "-Color"]
-					v.Transparency = Stuff[v.Name .. "-Transparency"]
+				if v:IsA("BasePart") and v.Name ~= "LaserArm" or v.Name ~= "HumanoidRootPart" then
+					v.Color = OldColor
+					v.Transparency = OldColor
 				end
 			end
 		end
@@ -81,6 +82,7 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 		if RequiemOn == true then
 			if Humanoid.MoveDirection == Vector3.new(0, 0, 0) then
 				Run:Stop()
+				WalkSound:Stop()
 			else
 				local Final = CurrentWS / 10
 				Run:Play(nil, nil, Final)
