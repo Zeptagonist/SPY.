@@ -43,7 +43,7 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 		return Animation
 		end
 	end
-	
+		
 	local Run = CreateAnimation(14777024220, Animator)
 	
 	local WalkSound = Instance.new("Sound", HumanoidRootPart)
@@ -85,7 +85,8 @@ if Player:IsInGroup(Group) and Player:GetRankInGroup(Group) >= 50 then
 				WalkSound:Stop()
 			else
 				local Final = CurrentWS / 10
-				Run:Play(nil, nil, Final)
+				Run:Play()
+				Run:AdjustSpeed(Final)
 				WalkSound.PlaybackSpeed = Final
 				WalkSound:Play()
 			end
